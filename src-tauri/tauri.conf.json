@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Mon inventaire",
+  "productName": "My Inventory",
   "version": "0.1.0",
   "identifier": "com.inventaire.app",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Mon inventaire",
+        "title": "My Inventory",
         "width": 1200,
         "height": 850,
         "resizable": true

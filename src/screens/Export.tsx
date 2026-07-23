@@ -25,7 +25,7 @@ export function Export({ onToast }: { onToast: (msg: string) => void }) {
     setGenerating(true);
     try {
       const { blob } = await generatePDF(state.rooms);
-      const path = await save({ defaultPath: 'mon-inventaire.pdf', filters: [{ name: 'Document PDF', extensions: ['pdf'] }] });
+      const path = await save({ defaultPath: 'my-inventory.pdf', filters: [{ name: 'Document PDF', extensions: ['pdf'] }] });
       if (!path) return;
       await writeFile(path, new Uint8Array(await blob.arrayBuffer()));
       onToast('PDF enregistré !');

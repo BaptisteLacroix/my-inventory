@@ -63,7 +63,7 @@ function App() {
             >
               M
             </div>
-            <div style={{ fontFamily: "'Lora',serif", fontSize: 22, fontWeight: 700, lineHeight: 1 }}>Mon inventaire</div>
+            <div style={{ fontFamily: "'Lora',serif", fontSize: 22, fontWeight: 700, lineHeight: 1 }}>My Inventory</div>
           </div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
             <button
