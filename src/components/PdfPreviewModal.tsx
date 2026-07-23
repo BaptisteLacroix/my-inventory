@@ -30,8 +30,12 @@ export function PdfPreviewModal({ rooms, generating, downloadLabel, onClose, onD
   const pageCount = (items?.length ?? 0) + 1;
 
   return createPortal(
-    <div style={{ position: 'fixed', inset: 0, zIndex: 920, background: 'rgba(46,40,32,.62)', display: 'flex', flexDirection: 'column' }}>
+    <div
+      className="print-container"
+      style={{ position: 'fixed', inset: 0, zIndex: 920, background: 'rgba(46,40,32,.62)', display: 'flex', flexDirection: 'column' }}
+    >
       <div
+        className="no-print"
         style={{
           background: '#fffdf8',
           borderBottom: '1px solid #ece3d4',
@@ -97,8 +101,12 @@ export function PdfPreviewModal({ rooms, generating, downloadLabel, onClose, onD
           {downloadLabel}
         </button>
       </div>
-      <div style={{ flex: 1, overflow: 'auto', padding: '26px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
+      <div
+        className="print-area"
+        style={{ flex: 1, overflow: 'auto', padding: '26px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}
+      >
         <div
+          className="print-page"
           style={{
             width: 'min(620px,94vw)',
             minHeight: 520,
@@ -134,6 +142,7 @@ export function PdfPreviewModal({ rooms, generating, downloadLabel, onClose, onD
         {items?.map((p, i) => (
           <div
             key={i}
+            className="print-page"
             style={{
               width: 'min(620px,94vw)',
               background: '#fff',

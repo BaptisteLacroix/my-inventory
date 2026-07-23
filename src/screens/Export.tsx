@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { save } from '@tauri-apps/plugin-dialog';
-import { openPath } from '@tauri-apps/plugin-opener';
 import { useInventory } from '../state/InventoryContext';
 import { generatePDF } from '../lib/pdf';
-import { getAppDataDir, join, writeFile, ensureDir } from '../lib/storage';
+import { writeFile } from '../lib/storage';
 import { PdfPreviewModal } from '../components/PdfPreviewModal';
 
 export function Export({ onToast }: { onToast: (msg: string) => void }) {
@@ -37,24 +36,8 @@ export function Export({ onToast }: { onToast: (msg: string) => void }) {
     }
   }
 
-  async function handlePrint() {
-    if (generating) return;
-    setGenerating(true);
-    try {
-      const { blob } = await generatePDF(state.rooms);
-      const appData = await getAppDataDir();
-      const tmpDir = await join(appData, 'tmp');
-      await ensureDir(tmpDir);
-      const path = await join(tmpDir, 'apercu-impression.pdf');
-      await writeFile(path, new Uint8Array(await blob.arrayBuffer()));
-      await openPath(path);
-      onToast('Une fenêtre va s\'ouvrir avec votre document ; utilisez le bouton Imprimer de cette fenêtre.');
-    } catch (err) {
-      console.error(err);
-      onToast("Une erreur est survenue lors de la préparation de l'impression.");
-    } finally {
-      setGenerating(false);
-    }
+  function handlePrint() {
+    window.print();
   }
 
   return (
