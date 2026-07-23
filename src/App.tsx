@@ -1,50 +1,104 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
-import "./App.css";
+import { useCallback, useRef, useState } from 'react';
+import { confirm } from '@tauri-apps/plugin-dialog';
+import { useInventory } from './state/InventoryContext';
+import { StepTimeline } from './components/StepTimeline';
+import { Toast } from './components/Toast';
+import { Welcome } from './screens/Welcome';
+import { Rooms } from './screens/Rooms';
+import { Items } from './screens/Items';
+import { Review } from './screens/Review';
+import { Export } from './screens/Export';
+import { clearInventoryImages } from './lib/inventoryFile';
+import type { Screen } from './state/types';
+
+function useToast() {
+  const [message, setMessage] = useState<string | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const show = useCallback((msg: string) => {
+    setMessage(msg);
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => setMessage(null), 2600);
+  }, []);
+  return { message, show };
+}
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+  const { state, dispatch } = useInventory();
+  const { message, show } = useToast();
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
+  function navigate(screen: Screen) {
+    if (screen === 'items' && !state.currentRoomId) {
+      dispatch({ type: 'GO_TO', screen: 'rooms' });
+      return;
+    }
+    dispatch({ type: 'GO_TO', screen });
+  }
+
+  async function resetAll() {
+    const ok = await confirm("Effacer tout l'inventaire et recommencer à zéro ?", { title: 'Confirmer' });
+    if (!ok) return;
+    await clearInventoryImages();
+    dispatch({ type: 'RESET_ALL' });
   }
 
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%', color: '#3a342c' }}>
+      <div style={{ width: '100%', maxWidth: 1600, margin: '0 auto', padding: '20px 32px 0', boxSizing: 'border-box' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 18 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 12,
+                background: 'var(--accent)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#fff',
+                fontFamily: "'Lora',serif",
+                fontWeight: 700,
+                fontSize: 22,
+              }}
+            >
+              M
+            </div>
+            <div style={{ fontFamily: "'Lora',serif", fontSize: 22, fontWeight: 700, lineHeight: 1 }}>Mon inventaire</div>
+          </div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+            <button
+              onClick={resetAll}
+              style={{ background: 'transparent', color: '#a9927a', border: 'none', borderRadius: 12, padding: '10px 8px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}
+            >
+              Recommencer
+            </button>
+          </div>
+        </div>
 
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <StepTimeline screen={state.screen} onNavigate={navigate} />
       </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
 
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          maxWidth: 1600,
+          margin: '0 auto',
+          padding: '0 32px 32px',
+          boxSizing: 'border-box',
         }}
       >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
-    </main>
+        {state.screen === 'welcome' && <Welcome onStart={() => dispatch({ type: 'GO_TO', screen: 'rooms' })} />}
+        {state.screen === 'rooms' && <Rooms onToast={show} />}
+        {state.screen === 'items' && <Items onToast={show} />}
+        {state.screen === 'review' && <Review />}
+        {state.screen === 'export' && <Export onToast={show} />}
+      </div>
+
+      <Toast message={message} />
+    </div>
   );
 }
 
