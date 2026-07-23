@@ -214,7 +214,7 @@ export function Items({ onToast }: { onToast: (msg: string) => void }) {
       </div>
 
       {room.items.length > 0 ? (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(200px,1fr))', gap: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(280px,1fr))', gap: 20 }}>
           {room.items.map((item) => (
             <ItemCard
               key={item.id}

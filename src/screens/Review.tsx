@@ -52,7 +52,7 @@ export function Review() {
             </span>
           </div>
           {room.items.length > 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(280px,1fr))', gap: 14 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(340px,1fr))', gap: 16 }}>
               {room.items.map((item) => {
                 const details = itemDetails(item);
                 return (
@@ -67,7 +67,7 @@ export function Review() {
                       padding: 12,
                     }}
                   >
-                    <div style={{ width: 84, height: 84, borderRadius: 10, overflow: 'hidden', background: '#f0e9dc', flex: 'none' }}>
+                    <div style={{ width: 120, height: 120, borderRadius: 10, overflow: 'hidden', background: '#f0e9dc', flex: 'none' }}>
                       <ItemThumb photoFile={item.photoFile} />
                     </div>
                     <div style={{ minWidth: 0, flex: 1 }}>
@@ -110,7 +110,7 @@ export function Review() {
         }}
       >
         <button
-          onClick={() => dispatch({ type: 'GO_TO', screen: 'rooms' })}
+          onClick={() => dispatch({ type: 'GO_TO', screen: 'items' })}
           style={{
             background: '#fffdf8',
             color: '#5c5346',
