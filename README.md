@@ -56,4 +56,4 @@ Produces a Windows NSIS installer at `src-tauri/target/release/bundle/nsis/My In
 
 ## License
 
-No license specified yet — all rights reserved by default.
+[MIT](LICENSE)
