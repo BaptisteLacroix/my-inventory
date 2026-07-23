@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import type { Room } from '../state/types';
 import { flatItems, printMeta, type FlatItem, type PrintMeta } from '../lib/pdf';
 
@@ -28,7 +29,7 @@ export function PdfPreviewModal({ rooms, generating, downloadLabel, onClose, onD
 
   const pageCount = (items?.length ?? 0) + 1;
 
-  return (
+  return createPortal(
     <div style={{ position: 'fixed', inset: 0, zIndex: 920, background: 'rgba(46,40,32,.62)', display: 'flex', flexDirection: 'column' }}>
       <div
         style={{
@@ -182,6 +183,7 @@ export function PdfPreviewModal({ rooms, generating, downloadLabel, onClose, onD
           </div>
         ))}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

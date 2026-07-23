@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { confirm } from '@tauri-apps/plugin-dialog';
 import type { Item, ItemFields } from '../state/types';
 import { ItemThumb } from './ItemThumb';
+import { useLockBodyScroll } from '../lib/useLockBodyScroll';
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
@@ -22,6 +24,7 @@ interface ItemFormModalProps {
 }
 
 export function ItemFormModal({ item, onSave, onCancel, onDelete }: ItemFormModalProps) {
+  useLockBodyScroll();
   const [draft, setDraft] = useState<ItemFields>(item.fields);
 
   const set = (key: keyof ItemFields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -32,7 +35,7 @@ export function ItemFormModal({ item, onSave, onCancel, onDelete }: ItemFormModa
     if (ok) onDelete();
   }
 
-  return (
+  return createPortal(
     <div
       style={{
         position: 'fixed',
@@ -175,6 +178,7 @@ export function ItemFormModal({ item, onSave, onCancel, onDelete }: ItemFormModa
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
