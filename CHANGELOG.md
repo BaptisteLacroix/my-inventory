@@ -4,6 +4,11 @@ All notable changes to this project are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.1.1] - 2026-07-23
+
+### Fixed
+- The "Imprimer" button in the PDF preview no longer fails with a permission error. It previously wrote a preview PDF to disk and tried to open it in the system's default PDF viewer, which requires filesystem permissions the app didn't grant (and, once granted, just handed off to whatever app is registered for `.pdf`, not necessarily something with an obvious print action). Printing now opens the native OS print dialog directly from within the app.
+
 ## [0.1.0] - 2026-07-23
 
 First release. A guided desktop app for photographing and cataloguing your belongings room by room, then exporting a PDF (or printing) for insurance purposes.
@@ -20,4 +25,5 @@ First release. A guided desktop app for photographing and cataloguing your belon
 - Single inventory only (multiple named inventories are planned but not in this release)
 - Interface is in French
 
+[0.1.1]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.1.1
 [0.1.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.1.0
