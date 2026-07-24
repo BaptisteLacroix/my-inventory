@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { confirm } from '@tauri-apps/plugin-dialog';
 import { useInventory } from './state/InventoryContext';
+import { useTour } from './state/TourContext';
 import { StepTimeline } from './components/StepTimeline';
 import { Toast } from './components/Toast';
 import { Welcome } from './screens/Welcome';
@@ -25,6 +26,7 @@ function useToast() {
 function App() {
   const { state, dispatch } = useInventory();
   const { message, show } = useToast();
+  const { startScreenTour } = useTour();
 
   function navigate(screen: Screen) {
     if (screen === 'items' && !state.currentRoomId) {
@@ -66,6 +68,12 @@ function App() {
             <div style={{ fontFamily: "'Lora',serif", fontSize: 22, fontWeight: 700, lineHeight: 1 }}>My Inventory</div>
           </div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+            <button
+              onClick={() => startScreenTour(state.screen, true)}
+              style={{ background: 'transparent', color: '#5c5346', border: 'none', borderRadius: 12, padding: '10px 10px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}
+            >
+              Aide
+            </button>
             <button
               onClick={resetAll}
               style={{ background: 'transparent', color: '#a9927a', border: 'none', borderRadius: 12, padding: '10px 8px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}

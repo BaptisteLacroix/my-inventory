@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { confirm } from '@tauri-apps/plugin-dialog';
 import { useInventory } from '../state/InventoryContext';
+import { useTour } from '../state/TourContext';
 import { SUGGESTED_ROOMS } from '../lib/fields';
 
 const roomButtonBase: React.CSSProperties = {
@@ -13,8 +15,14 @@ const roomButtonBase: React.CSSProperties = {
 
 export function Rooms({ onToast }: { onToast: (msg: string) => void }) {
   const { state, dispatch } = useInventory();
+  const { startScreenTour } = useTour();
   const used = state.rooms.map((r) => r.name.toLowerCase());
   const suggestions = SUGGESTED_ROOMS.filter((n) => !used.includes(n.toLowerCase()));
+
+  useEffect(() => {
+    startScreenTour('rooms');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const addRoom = (name: string) => {
     const trimmed = name.trim();
@@ -83,7 +91,7 @@ export function Rooms({ onToast }: { onToast: (msg: string) => void }) {
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 20 }}>
+      <div id="tour-rooms-suggestions" style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 20 }}>
         {suggestions.map((name) => (
           <button
             key={name}

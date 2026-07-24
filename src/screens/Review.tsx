@@ -1,15 +1,23 @@
+import { useEffect } from 'react';
 import { useInventory } from '../state/InventoryContext';
+import { useTour } from '../state/TourContext';
 import { itemTitle, itemDetails } from '../lib/fields';
 import { parsePrice, fmtEuro } from '../lib/price';
 import { ItemThumb } from '../components/ItemThumb';
 
 export function Review() {
   const { state, dispatch } = useInventory();
+  const { startScreenTour } = useTour();
   const itemCount = state.rooms.reduce((n, r) => n + r.items.length, 0);
   const total = state.rooms.reduce(
     (sum, r) => sum + r.items.reduce((s, it) => s + parsePrice(it.fields.prix), 0),
     0,
   );
+
+  useEffect(() => {
+    startScreenTour('review');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const stat = (value: string | number, label: string) => (
     <div style={{ background: '#fffdf8', border: '1px solid #ece3d4', borderRadius: 16, padding: '18px 24px', flex: 1, minWidth: 150 }}>
@@ -28,7 +36,7 @@ export function Review() {
         voulez.
       </p>
 
-      <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 26 }}>
+      <div id="tour-review-area" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 26 }}>
         {stat(state.rooms.length, 'pièce(s)')}
         {stat(itemCount, 'objet(s)')}
         {stat(fmtEuro(total), 'valeur estimée')}

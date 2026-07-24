@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { open } from '@tauri-apps/plugin-dialog';
 import { useInventory } from '../state/InventoryContext';
+import { useTour } from '../state/TourContext';
 import { readAndDownscaleImage, listImagesInFolder } from '../lib/image';
 import { writeItemImage, deleteItemImage } from '../lib/inventoryFile';
 import { itemTitle, itemDetails, itemNeedsInfo } from '../lib/fields';
@@ -10,6 +11,7 @@ import type { ItemFields } from '../state/types';
 
 export function Items({ onToast }: { onToast: (msg: string) => void }) {
   const { state, dispatch } = useInventory();
+  const { startScreenTour } = useTour();
   const [importing, setImporting] = useState(false);
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
   const room = state.rooms.find((r) => r.id === state.currentRoomId) ?? null;
@@ -19,6 +21,11 @@ export function Items({ onToast }: { onToast: (msg: string) => void }) {
     if (!room) dispatch({ type: 'GO_TO', screen: 'rooms' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room]);
+
+  useEffect(() => {
+    startScreenTour('items');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!room) return null;
 
@@ -114,6 +121,7 @@ export function Items({ onToast }: { onToast: (msg: string) => void }) {
       </p>
 
       <div
+        id="tour-import-area"
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))',
@@ -198,6 +206,7 @@ export function Items({ onToast }: { onToast: (msg: string) => void }) {
         </button>
       </div>
       <div
+        id="tour-info-hint"
         style={{
           background: '#fdf6e9',
           border: '1px solid #f0e2c4',

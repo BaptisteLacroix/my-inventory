@@ -1,4 +1,14 @@
+import { useEffect } from 'react';
+import { useTour } from '../state/TourContext';
+
 export function Welcome({ onStart }: { onStart: () => void }) {
+  const { startScreenTour } = useTour();
+
+  useEffect(() => {
+    startScreenTour('welcome');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div
       style={{
@@ -32,6 +42,7 @@ export function Welcome({ onStart }: { onStart: () => void }) {
         Vous avancez à votre rythme. Rien n'est obligatoire, et vous pouvez toujours revenir en arrière.
       </p>
       <button
+        id="tour-start"
         onClick={onStart}
         style={{
           background: 'var(--accent)',
@@ -47,7 +58,16 @@ export function Welcome({ onStart }: { onStart: () => void }) {
       >
         Commencer &nbsp;→
       </button>
+      <div style={{ marginTop: 22 }}>
+        <button
+          onClick={() => startScreenTour('welcome', true)}
+          style={{ background: 'none', border: 'none', color: 'var(--accent)', fontSize: 17, fontWeight: 700, cursor: 'pointer', textDecoration: 'underline' }}
+        >
+          Montrez-moi comment ça marche
+        </button>
+      </div>
       <div
+        id="tour-autosave-info"
         style={{
           maxWidth: 560,
           margin: '34px auto 0',
