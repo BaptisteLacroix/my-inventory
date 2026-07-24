@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { confirm } from '@tauri-apps/plugin-dialog';
 import type { Item, ItemFields } from '../state/types';
 import { ItemThumb } from './ItemThumb';
 import { useLockBodyScroll } from '../lib/useLockBodyScroll';
+import { useTour } from '../state/TourContext';
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
@@ -26,6 +27,12 @@ interface ItemFormModalProps {
 export function ItemFormModal({ item, onSave, onCancel, onDelete }: ItemFormModalProps) {
   useLockBodyScroll();
   const [draft, setDraft] = useState<ItemFields>(item.fields);
+  const { startFormTour } = useTour();
+
+  useEffect(() => {
+    startFormTour();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const set = (key: keyof ItemFields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setDraft((d) => ({ ...d, [key]: e.target.value }));
@@ -69,10 +76,27 @@ export function ItemFormModal({ item, onSave, onCancel, onDelete }: ItemFormModa
               Remplissez seulement ce que vous savez. Le reste peut rester vide.
             </div>
           </div>
+          <button
+            onClick={() => startFormTour(true)}
+            style={{
+              flex: 'none',
+              alignSelf: 'flex-start',
+              background: '#f3fbf8',
+              color: 'var(--accent)',
+              border: '2px solid var(--accent)',
+              borderRadius: 10,
+              padding: '8px 12px',
+              fontSize: 14,
+              fontWeight: 800,
+              cursor: 'pointer',
+            }}
+          >
+            ? Aide
+          </button>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <div>
+          <div id="tour-form-name">
             <label style={labelStyle}>Nom de l'objet</label>
             <input
               value={draft.nom ?? ''}
@@ -81,7 +105,7 @@ export function ItemFormModal({ item, onSave, onCancel, onDelete }: ItemFormModa
               style={inputStyle}
             />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+          <div id="tour-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
             <div>
               <label style={labelStyle}>Prix d'achat</label>
               <input value={draft.prix ?? ''} onChange={set('prix')} placeholder="Ex : 850 €" style={inputStyle} />
@@ -109,7 +133,7 @@ export function ItemFormModal({ item, onSave, onCancel, onDelete }: ItemFormModa
               />
             </div>
           </div>
-          <div>
+          <div id="tour-form-serie">
             <label style={labelStyle}>Numéro de série / référence</label>
             <input
               value={draft.serie ?? ''}
@@ -118,7 +142,7 @@ export function ItemFormModal({ item, onSave, onCancel, onDelete }: ItemFormModa
               style={inputStyle}
             />
           </div>
-          <div>
+          <div id="tour-form-note">
             <label style={labelStyle}>Autres informations</label>
             <textarea
               value={draft.note ?? ''}
@@ -129,7 +153,7 @@ export function ItemFormModal({ item, onSave, onCancel, onDelete }: ItemFormModa
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: 10, marginTop: 22, alignItems: 'center' }}>
+        <div id="tour-form-save" style={{ display: 'flex', gap: 10, marginTop: 22, alignItems: 'center' }}>
           <button
             onClick={handleDelete}
             style={{

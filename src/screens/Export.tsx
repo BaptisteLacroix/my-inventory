@@ -1,15 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { save } from '@tauri-apps/plugin-dialog';
 import { useInventory } from '../state/InventoryContext';
+import { useTour } from '../state/TourContext';
 import { generatePDF } from '../lib/pdf';
 import { writeFile } from '../lib/storage';
 import { PdfPreviewModal } from '../components/PdfPreviewModal';
 
 export function Export({ onToast }: { onToast: (msg: string) => void }) {
   const { state, dispatch } = useInventory();
+  const { startScreenTour } = useTour();
   const [previewOpen, setPreviewOpen] = useState(false);
   const [generating, setGenerating] = useState(false);
   const itemCount = state.rooms.reduce((n, r) => n + r.items.length, 0);
+
+  useEffect(() => {
+    startScreenTour('export');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function openPreview() {
     if (itemCount === 0) {
@@ -64,6 +71,7 @@ export function Export({ onToast }: { onToast: (msg: string) => void }) {
       </p>
 
       <div
+        id="tour-export-summary"
         style={{
           background: '#fffdf8',
           border: '1px solid #ece3d4',

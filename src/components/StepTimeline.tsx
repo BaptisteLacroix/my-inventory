@@ -8,6 +8,7 @@ export function StepTimeline({ screen, onNavigate }: { screen: Screen; onNavigat
 
   return (
     <div
+      id="tour-timeline"
       style={{
         display: 'flex',
         alignItems: 'flex-start',
