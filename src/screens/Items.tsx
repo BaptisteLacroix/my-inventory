@@ -7,6 +7,7 @@ import { writeItemImage, deleteItemImage } from '../lib/inventoryFile';
 import { itemTitle, itemDetails, itemNeedsInfo } from '../lib/fields';
 import { ItemCard } from '../components/ItemCard';
 import { ItemFormModal } from '../components/ItemFormModal';
+import { Spinner } from '../components/Spinner';
 import type { ItemFields } from '../state/types';
 
 export function Items({ onToast }: { onToast: (msg: string) => void }) {
@@ -164,7 +165,9 @@ export function Items({ onToast }: { onToast: (msg: string) => void }) {
           </div>
           <div>
             <div style={{ fontSize: 21, fontWeight: 800, color: '#fff' }}>Ajouter des photos</div>
-            <div style={{ fontSize: 15, color: 'rgba(255,255,255,.85)' }}>Cliquez pour choisir vos images</div>
+            <div style={{ fontSize: 15, color: 'rgba(255,255,255,.85)' }}>
+              {importing ? 'Ajout en cours…' : 'Cliquez pour choisir vos images'}
+            </div>
           </div>
         </button>
         <button
@@ -201,10 +204,31 @@ export function Items({ onToast }: { onToast: (msg: string) => void }) {
           </div>
           <div>
             <div style={{ fontSize: 21, fontWeight: 800, color: 'var(--accent)' }}>Choisir un dossier</div>
-            <div style={{ fontSize: 15, color: '#8a8073' }}>Toutes les photos d'un coup</div>
+            <div style={{ fontSize: 15, color: '#8a8073' }}>
+              {importing ? 'Ajout en cours…' : "Toutes les photos d'un coup"}
+            </div>
           </div>
         </button>
       </div>
+
+      {importing && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 18,
+            background: '#fffdf8',
+            border: '2px solid var(--accent)',
+            borderRadius: 16,
+            padding: '18px 22px',
+            marginBottom: 24,
+          }}
+        >
+          <Spinner size={40} />
+          <div style={{ fontSize: 19, fontWeight: 800, color: '#3a342c' }}>Ajout des photos en cours…</div>
+        </div>
+      )}
+
       <div
         id="tour-info-hint"
         style={{

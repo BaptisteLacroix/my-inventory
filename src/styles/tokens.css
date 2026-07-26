@@ -48,6 +48,12 @@ button {
   }
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes spot {
   0%,
   100% {
