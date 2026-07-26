@@ -46,6 +46,17 @@ npm install
 npm run tauri dev
 ```
 
+## Testing
+
+Two separate suites cover different things:
+
+```bash
+npm run test          # Vitest + Testing Library: unit/component tests in jsdom
+npm run test:e2e       # Playwright: real-browser end-to-end tests
+```
+
+The e2e suite drives the actual app (all real providers/reducer/screens, not mocks) through a real Chromium engine, so it catches real layout/CSS bugs jsdom can't (e.g. modals rendering off-screen, print stylesheets leaving a blank page) alongside full user journeys across every screen. Since there's no Tauri runtime outside the native webview, `e2e/mocks/*` swaps in tiny in-memory fakes for the handful of Tauri plugin calls (fs, dialog, path, convertFileSrc) via a Vite alias active only in `--mode e2e` (see `playwright.config.ts`); the app code itself is untouched. `npm run test:e2e:ui` opens Playwright's UI mode for debugging a single test interactively.
+
 ## Building an installer
 
 ```bash
