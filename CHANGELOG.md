@@ -4,6 +4,12 @@ All notable changes to this project are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.0] - 2026-07-24
+
+### Added
+- An onboarding tutorial that walks first-time users through each screen (Bienvenue, Vos pièces, Vos objets, Aperçu, PDF) with a spotlight on the relevant part of the screen and a short explanation. It appears automatically the first time you reach each screen, is remembered afterward so it won't repeat, and can be replayed anytime via the "Aide" button in the header.
+- A matching guided tour for the item form (name, details, serial number, notes, save), shown the first time you open it and replayable via the "? Aide" button inside the form.
+
 ## [0.1.1] - 2026-07-23
 
 ### Fixed
@@ -25,5 +31,6 @@ First release. A guided desktop app for photographing and cataloguing your belon
 - Single inventory only (multiple named inventories are planned but not in this release)
 - Interface is in French
 
+[0.2.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.2.0
 [0.1.1]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.1.1
 [0.1.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.1.0
