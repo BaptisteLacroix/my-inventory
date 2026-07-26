@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Room } from '../state/types';
 import { flatItems, printMeta, type FlatItem, type PrintMeta } from '../lib/pdf';
+import { Spinner } from './Spinner';
 
 interface PdfPreviewModalProps {
   rooms: Room[];
@@ -96,8 +97,12 @@ export function PdfPreviewModal({ rooms, generating, downloadLabel, onClose, onD
             fontWeight: 800,
             cursor: generating ? 'default' : 'pointer',
             boxShadow: '0 6px 16px rgba(47,125,110,.28)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
           }}
         >
+          {generating && <Spinner size={16} color="#fff" trackColor="rgba(255,255,255,.35)" />}
           {downloadLabel}
         </button>
       </div>
@@ -137,7 +142,12 @@ export function PdfPreviewModal({ rooms, generating, downloadLabel, onClose, onD
           </div>
         </div>
 
-        {items === null && <div style={{ color: '#fff', fontSize: 17 }}>Préparation de l'aperçu…</div>}
+        {items === null && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#fff', fontSize: 17 }}>
+            <Spinner size={22} color="#fff" trackColor="rgba(255,255,255,.3)" />
+            Préparation de l'aperçu…
+          </div>
+        )}
 
         {items?.map((p, i) => (
           <div
