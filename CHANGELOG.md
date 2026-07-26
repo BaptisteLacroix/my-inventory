@@ -4,6 +4,12 @@ All notable changes to this project are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.3.0] - 2026-07-26
+
+### Added
+- Automatic update checks: the app checks GitHub for a newer release a few seconds after startup, and shows a dialog with the new version number and its changelog if one is found. Choosing "Mettre à jour" downloads and installs it, then restarts the app. Choosing "Plus tard" just dismisses it for this session. A "Vérifier les mises à jour" button in the header lets you check on demand, with a toast either way (up to date / check failed).
+- Releases are now built, signed, and published automatically by a GitHub Actions workflow (`.github/workflows/release.yml`) whenever a `vX.Y.Z` tag is pushed, replacing the manual local-build-and-upload process. The release body is pulled straight from this changelog's matching version section, which is what shows up in the update dialog.
+
 ## [0.2.0] - 2026-07-24
 
 ### Added
@@ -31,6 +37,7 @@ First release. A guided desktop app for photographing and cataloguing your belon
 - Single inventory only (multiple named inventories are planned but not in this release)
 - Interface is in French
 
+[0.3.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.3.0
 [0.2.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.2.0
 [0.1.1]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.1.1
 [0.1.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.1.0

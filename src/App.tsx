@@ -9,6 +9,7 @@ import { Rooms } from './screens/Rooms';
 import { Items } from './screens/Items';
 import { Review } from './screens/Review';
 import { Export } from './screens/Export';
+import { UpdateChecker } from './components/UpdateChecker';
 import { clearInventoryImages } from './lib/inventoryFile';
 import type { Screen } from './state/types';
 
@@ -27,6 +28,7 @@ function App() {
   const { state, dispatch } = useInventory();
   const { message, show } = useToast();
   const { startScreenTour } = useTour();
+  const [updateCheckSignal, setUpdateCheckSignal] = useState(0);
 
   function navigate(screen: Screen) {
     if (screen === 'items' && !state.currentRoomId) {
@@ -75,6 +77,12 @@ function App() {
               Aide
             </button>
             <button
+              onClick={() => setUpdateCheckSignal((n) => n + 1)}
+              style={{ background: 'transparent', color: '#5c5346', border: 'none', borderRadius: 12, padding: '10px 10px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}
+            >
+              Vérifier les mises à jour
+            </button>
+            <button
               onClick={resetAll}
               style={{ background: 'transparent', color: '#a9927a', border: 'none', borderRadius: 12, padding: '10px 8px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}
             >
@@ -106,6 +114,7 @@ function App() {
       </div>
 
       <Toast message={message} />
+      <UpdateChecker onToast={show} manualCheckSignal={updateCheckSignal} />
     </div>
   );
 }
