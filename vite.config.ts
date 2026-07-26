@@ -29,4 +29,31 @@ export default defineConfig(async () => ({
       ignored: ["**/src-tauri/**"],
     },
   },
+
+  test: {
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup.ts"],
+    globals: false,
+    css: false,
+    exclude: ["**/node_modules/**", "**/src-tauri/**", "**/src/test-modal.tsx"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html", "lcov"],
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: [
+        "src/test/**",
+        "src/test-modal.tsx",
+        "src/main.tsx",
+        "src/vite-env.d.ts",
+        "src/**/*.test.{ts,tsx}",
+        "src/**/*.d.ts",
+      ],
+      thresholds: {
+        lines: 80,
+        statements: 80,
+        functions: 80,
+        branches: 70,
+      },
+    },
+  },
 }));
