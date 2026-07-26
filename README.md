@@ -54,6 +54,17 @@ npm run tauri build
 
 Produces a Windows NSIS installer at `src-tauri/target/release/bundle/nsis/My Inventory_<version>_x64-setup.exe`. The installer isn't code-signed, so Windows SmartScreen will show a warning on first run ("More info" → "Run anyway").
 
+## Auto-update & releases
+
+The app checks GitHub for a newer release shortly after launch (and on demand via the "Vérifier les mises à jour" header button); if one's found, it shows the new version's changelog and installs it on confirmation via `@tauri-apps/plugin-updater`.
+
+Cutting a release:
+1. Bump the version in `package.json` and `src-tauri/tauri.conf.json`, and add a matching `## [x.y.z] - date` section to `CHANGELOG.md` (its content becomes both the GitHub release notes and what the update dialog shows).
+2. `git tag vX.Y.Z && git push origin vX.Y.Z`.
+3. `.github/workflows/release.yml` builds, signs, and publishes the release automatically, including the `latest.json` manifest the updater polls (`releases/latest/download/latest.json`).
+
+Signing requires two repo secrets (Settings → Secrets and variables → Actions): `TAURI_SIGNING_PRIVATE_KEY` and `TAURI_SIGNING_PRIVATE_KEY_PASSWORD`, from a keypair generated once via `npx tauri signer generate`. The matching public key lives in `tauri.conf.json`'s `plugins.updater.pubkey` — without the matching private key in CI, builds still succeed but aren't signed, and the updater will refuse to install them.
+
 ## License
 
 [MIT](LICENSE)
