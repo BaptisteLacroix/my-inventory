@@ -1,0 +1,104 @@
+{
+  "$schema": "./wiki.schema.json",
+  "screens": [
+    {
+      "id": "welcome",
+      "nav": "Accueil",
+      "kicker": "Écran d'accueil",
+      "title": "Accueil",
+      "icon": "🏠",
+      "blocks": [
+        { "h": "« Commencer »", "t": "le grand bouton vert ouvre la première étape. Cliquez sans crainte." },
+        { "h": "« Montrez-moi comment ça marche »", "t": "rejoue les bulles d'explication de l'écran." }
+      ],
+      "tip": "Votre travail est gardé tout seul sur cet ordinateur. Vous pouvez fermer et revenir plus tard."
+    },
+    {
+      "id": "rooms",
+      "nav": "Vos pièces",
+      "kicker": "Étape 1",
+      "title": "Vos pièces",
+      "icon": "🚪",
+      "blocks": [
+        { "h": "Les pastilles (Salon, Cuisine…)", "t": "touchez-en une : la pièce s'ajoute à votre liste." },
+        { "h": "La case de texte", "t": "écrivez une autre pièce, puis « Ajouter »." },
+        { "h": "« Ouvrir cette pièce »", "t": "entre dans la pièce pour y mettre vos photos." }
+      ],
+      "tip": "Créez d'abord toutes vos pièces, puis remplissez-les une par une."
+    },
+    {
+      "id": "items",
+      "nav": "Vos objets",
+      "kicker": "Étape 2",
+      "title": "Vos objets",
+      "icon": "📷",
+      "blocks": [
+        { "h": "« Ajouter des photos »", "t": "choisissez une ou plusieurs photos sur l'ordinateur." },
+        { "h": "« Choisir un dossier »", "t": "ajoute d'un coup toutes les photos d'un dossier." },
+        { "h": "« Ajouter les informations »", "t": "sous chaque photo, notez le nom, le prix, les dimensions…" }
+      ],
+      "tip": "Rien n'est obligatoire. Notez seulement ce que vous savez."
+    },
+    {
+      "id": "review",
+      "nav": "L'aperçu",
+      "kicker": "Étape 3",
+      "title": "Aperçu",
+      "icon": "👀",
+      "blocks": [
+        { "h": "Les trois compteurs", "t": "le nombre de pièces, d'objets, et la valeur estimée." },
+        { "h": "La liste par pièce", "t": "chaque objet avec sa photo et ses informations." },
+        { "h": "« Modifier »", "t": "revient en arrière pour corriger ou compléter." }
+      ],
+      "tip": "Le bon moment pour tout vérifier avant de créer le PDF."
+    },
+    {
+      "id": "export",
+      "nav": "Le PDF",
+      "kicker": "Étape 4",
+      "title": "Créer le PDF",
+      "icon": "📄",
+      "blocks": [
+        { "h": "« Voir l'aperçu du PDF »", "t": "montre le document page par page." },
+        { "h": "« Télécharger le PDF »", "t": "enregistre le fichier sur l'ordinateur." },
+        { "h": "Envoi à l'assurance", "t": "le PDF peut être joint à un e-mail ou imprimé." }
+      ],
+      "tip": "Une photo et ses informations par page : clair et facile à lire."
+    }
+  ],
+  "steps": [
+    { "h": "Créez vos pièces", "t": "Une pièce pour chaque endroit : salon, cuisine, chambre…" },
+    { "h": "Ajoutez vos photos", "t": "Ouvrez une pièce, puis ajoutez vos photos." },
+    { "h": "Décrivez chaque objet", "t": "Notez ce que vous savez sous chaque photo." },
+    { "h": "Vérifiez l'aperçu", "t": "Tout est récapitulé, avec la valeur totale." },
+    { "h": "Téléchargez le PDF", "t": "Un document prêt pour votre assurance." }
+  ],
+  "faq": [
+    { "q": "Dois-je tout remplir ?", "a": "Non. Tous les champs sont facultatifs. Une photo seule est déjà utile." },
+    { "q": "Mon travail est-il perdu si je ferme ?", "a": "Non. Il est gardé tout seul sur cet ordinateur." },
+    { "q": "Mes photos partent-elles sur Internet ?", "a": "Non. Tout reste sur votre ordinateur." },
+    {
+      "q": "Comment corriger une information ?",
+      "a": "Rouvrez la pièce, cliquez « Ajouter les informations » sous la photo, modifiez, puis « Enregistrer »."
+    },
+    { "q": "Comment recommencer à zéro ?", "a": "En haut, le bouton « Recommencer » efface tout et repart de l'accueil." }
+  ],
+  "trouble": [
+    {
+      "q": "Ma photo ne s'ajoute pas",
+      "a": "Vérifiez que c'est bien une image (jpg, png). Réessayez avec « Ajouter des photos »."
+    },
+    {
+      "q": "Le PDF ne se télécharge pas",
+      "a": "Vérifiez qu'il y a au moins une photo. Réessayez, puis regardez dans « Téléchargements »."
+    },
+    {
+      "q": "J'ai supprimé un objet par erreur",
+      "a": "Il faudra le rajouter. Les suppressions ne peuvent pas être annulées."
+    },
+    {
+      "q": "Le texte est trop petit",
+      "a": "Demandez à une personne qui vous aide d'agrandir l'affichage de l'écran."
+    }
+  ]
+}

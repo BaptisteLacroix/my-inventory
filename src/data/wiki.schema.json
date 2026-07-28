@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Wiki content",
+  "description": "Text and media shown in the in-app help wiki. Edit this file to change the guide without touching code.",
+  "type": "object",
+  "required": ["screens", "steps", "faq", "trouble"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "screens": {
+      "type": "array",
+      "description": "One guide page per app screen. Shown in the left navigation, in this order.",
+      "items": {
+        "type": "object",
+        "required": ["id", "nav", "kicker", "title", "icon", "blocks", "tip"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique id. Use welcome/rooms/items/review/export to link the '▶ Revoir les bulles' button to that app screen."
+          },
+          "nav": { "type": "string", "description": "Short label shown in the left navigation." },
+          "kicker": { "type": "string", "description": "Small orange label above the title (e.g. 'Étape 1')." },
+          "title": { "type": "string", "description": "Big heading of the section." },
+          "icon": { "type": "string", "description": "Emoji shown next to the nav label." },
+          "image": {
+            "type": "string",
+            "description": "Optional screenshot filename in public/assets/wiki/. Defaults to screen-<id>.png."
+          },
+          "video": {
+            "type": "string",
+            "description": "Optional video filename in public/assets/wiki/. Defaults to video-<id>.mp4."
+          },
+          "showReplayTour": {
+            "type": "boolean",
+            "description": "Show the '▶ Revoir les bulles de cet écran' button. Defaults to true for welcome/rooms/items/review/export."
+          },
+          "blocks": {
+            "type": "array",
+            "description": "Numbered explanation points, in order. Add a step by adding an item.",
+            "items": {
+              "type": "object",
+              "required": ["h", "t"],
+              "additionalProperties": false,
+              "properties": {
+                "h": { "type": "string", "description": "Bold lead-in (what to look at)." },
+                "t": { "type": "string", "description": "The explanation that follows the dash." },
+                "image": {
+                  "type": "string",
+                  "description": "Optional image filename in public/assets/wiki/, shown under this step (e.g. 'rooms-step-1.png')."
+                },
+                "video": {
+                  "type": "string",
+                  "description": "Optional video filename in public/assets/wiki/, shown under this step."
+                },
+                "caption": {
+                  "type": "string",
+                  "description": "Optional small caption under this step's image/video."
+                }
+              }
+            }
+          },
+          "tip": { "type": "string", "description": "The '💡 Astuce' box text." }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "description": "The '🧭 Le pas-à-pas' section: the whole journey in a few steps.",
+      "items": {
+        "type": "object",
+        "required": ["h", "t"],
+        "additionalProperties": false,
+        "properties": {
+          "h": { "type": "string", "description": "Step title." },
+          "t": { "type": "string", "description": "Step description." }
+        }
+      }
+    },
+    "faq": {
+      "type": "array",
+      "description": "The '❓ Questions fréquentes' section.",
+      "items": {
+        "type": "object",
+        "required": ["q", "a"],
+        "additionalProperties": false,
+        "properties": {
+          "q": { "type": "string", "description": "The question." },
+          "a": { "type": "string", "description": "The answer." }
+        }
+      }
+    },
+    "trouble": {
+      "type": "array",
+      "description": "The '🛟 En cas de problème' section.",
+      "items": {
+        "type": "object",
+        "required": ["q", "a"],
+        "additionalProperties": false,
+        "properties": {
+          "q": { "type": "string", "description": "The problem." },
+          "a": { "type": "string", "description": "What to do about it." }
+        }
+      }
+    }
+  }
+}
