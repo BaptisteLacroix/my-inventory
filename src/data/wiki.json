@@ -8,10 +8,46 @@
       "title": "Accueil",
       "icon": "🏠",
       "blocks": [
-        { "h": "« Commencer »", "t": "le grand bouton vert ouvre la première étape. Cliquez sans crainte." },
-        { "h": "« Montrez-moi comment ça marche »", "t": "rejoue les bulles d'explication de l'écran." }
+        {
+          "h": "Le ruban en haut de l'écran",
+          "t": "il montre les 5 étapes (Bienvenue, Vos pièces, Vos objets, Aperçu, PDF) et vous suit sur tous les écrans. Une fois une étape atteinte, vous pouvez cliquer dessus pour y revenir directement.",
+          "image": "welcome-step-1.png",
+          "caption": "Le ruban des 5 étapes, toujours visible en haut."
+        },
+        {
+          "h": "« Commencer »",
+          "t": "le grand bouton vert vous emmène à la première étape, « Vos pièces ». Vous pouvez cliquer sans crainte : rien n'est définitif et vous pouvez toujours revenir en arrière.",
+          "image": "welcome-step-2.png",
+          "caption": "Le bouton « Commencer » au centre de l'écran."
+        },
+        {
+          "h": "« Montrez-moi comment ça marche »",
+          "t": "ce lien souligné rejoue les petites bulles d'explication de l'écran actuel, une par une."
+        },
+        {
+          "h": "Le message « Votre travail est gardé automatiquement »",
+          "t": "en dessous du bouton, ce petit encadré rappelle que rien ne se perd : vous pouvez fermer l'application à tout moment et tout retrouver en la rouvrant."
+        },
+        {
+          "h": "« Aide », en haut à droite",
+          "t": "ouvre ce guide (celui que vous lisez en ce moment) depuis n'importe quel écran de l'application.",
+          "image": "welcome-step-3.png",
+          "caption": "Les boutons du haut : Aide, Vérifier les mises à jour, Recommencer."
+        },
+        {
+          "h": "« Vérifier les mises à jour », en haut à droite",
+          "t": "vérifie tout de suite si une nouvelle version de l'application existe. L'application le fait déjà automatiquement à chaque démarrage."
+        },
+        {
+          "h": "« Recommencer », en haut à droite",
+          "t": "efface tout l'inventaire (pièces, photos, informations) et repart de zéro. Une question de confirmation s'affiche d'abord, car cette action ne peut pas être annulée."
+        },
+        {
+          "h": "Le bouton rond « ? » en bas à droite",
+          "t": "toujours visible, il ouvre ce même guide où que vous soyez dans l'application."
+        }
       ],
-      "tip": "Votre travail est gardé tout seul sur cet ordinateur. Vous pouvez fermer et revenir plus tard."
+      "tip": "Votre travail est gardé tout seul sur cet ordinateur, sans aucune action de votre part. Vous pouvez fermer et revenir plus tard, tout sera là."
     },
     {
       "id": "rooms",
@@ -20,11 +56,42 @@
       "title": "Vos pièces",
       "icon": "🚪",
       "blocks": [
-        { "h": "Les pastilles (Salon, Cuisine…)", "t": "touchez-en une : la pièce s'ajoute à votre liste." },
-        { "h": "La case de texte", "t": "écrivez une autre pièce, puis « Ajouter »." },
-        { "h": "« Ouvrir cette pièce »", "t": "entre dans la pièce pour y mettre vos photos." }
+        {
+          "h": "Les pastilles (Salon, Cuisine, Chambre…)",
+          "t": "touchez-en une : la pièce s'ajoute aussitôt à votre liste, plus bas sur l'écran. Une pastille déjà utilisée disparaît de la liste des suggestions.",
+          "image": "rooms-step-1.png",
+          "caption": "Les pastilles de pièces suggérées, à toucher pour les ajouter."
+        },
+        {
+          "h": "La case de texte « Ou écrivez une pièce »",
+          "t": "si votre pièce n'est pas dans les suggestions (par exemple « véranda » ou « atelier »), écrivez son nom ici puis cliquez sur « Ajouter ».",
+          "image": "rooms-step-2.png",
+          "caption": "La case de texte et le bouton « Ajouter »."
+        },
+        {
+          "h": "Un message apparaît en bas de l'écran",
+          "t": "si vous essayez d'ajouter une pièce qui existe déjà, un petit message vous prévient et rien n'est ajouté en double."
+        },
+        {
+          "h": "Chaque carte de pièce",
+          "t": "affiche son nom et le nombre d'objets qu'elle contient déjà (« Aucun » au départ).",
+          "image": "rooms-step-3.png",
+          "caption": "Une carte de pièce, avec ses deux boutons."
+        },
+        {
+          "h": "« Ouvrir cette pièce »",
+          "t": "entre dans la pièce pour y ajouter des photos de vos objets. C'est l'étape suivante."
+        },
+        {
+          "h": "« Retirer »",
+          "t": "supprime la pièce. Si elle contient déjà des objets, une question de confirmation s'affiche d'abord pour éviter une erreur ; si elle est vide, elle est retirée tout de suite."
+        },
+        {
+          "h": "« ← Précédent » et « Voir l'aperçu → », en bas de l'écran",
+          "t": "permettent de revenir à l'accueil ou d'avancer vers l'étape « Aperçu ». Ces boutons restent visibles même si vous faites défiler la liste des pièces."
+        }
       ],
-      "tip": "Créez d'abord toutes vos pièces, puis remplissez-les une par une."
+      "tip": "Créez d'abord toutes vos pièces d'un coup, puis remplissez-les une par une : c'est plus simple que de faire des allers-retours."
     },
     {
       "id": "items",
@@ -33,11 +100,76 @@
       "title": "Vos objets",
       "icon": "📷",
       "blocks": [
-        { "h": "« Ajouter des photos »", "t": "choisissez une ou plusieurs photos sur l'ordinateur." },
-        { "h": "« Choisir un dossier »", "t": "ajoute d'un coup toutes les photos d'un dossier." },
-        { "h": "« Ajouter les informations »", "t": "sous chaque photo, notez le nom, le prix, les dimensions…" }
+        {
+          "h": "« Ajouter des photos », le grand bouton vert",
+          "t": "ouvre la fenêtre habituelle de l'ordinateur pour choisir une ou plusieurs photos sur votre disque. Chaque photo choisie devient une nouvelle carte d'objet.",
+          "image": "items-step-1.png",
+          "caption": "Les deux grands boutons d'ajout de photos."
+        },
+        {
+          "h": "« Choisir un dossier »",
+          "t": "ajoute d'un seul coup toutes les photos contenues dans un dossier de l'ordinateur — pratique si vous avez déjà rassemblé vos photos au même endroit."
+        },
+        {
+          "h": "Pendant l'ajout des photos",
+          "t": "un bandeau avec une roue qui tourne apparaît : « Ajout des photos en cours… ». Pour un dossier avec beaucoup de photos, cela peut prendre un petit moment — inutile de cliquer plusieurs fois, il suffit d'attendre.",
+          "image": "items-step-2.png",
+          "caption": "Le bandeau de chargement affiché pendant l'ajout des photos."
+        },
+        {
+          "h": "« ⇄ Changer de pièce », en haut de l'écran",
+          "t": "revient à la liste des pièces si vous voulez ajouter des photos ailleurs."
+        },
+        {
+          "h": "Chaque carte d'objet",
+          "t": "montre la photo, le nom (« Objet sans nom » tant qu'il n'est pas renseigné), et un badge orange « Informations à ajouter » tant que la fiche est vide.",
+          "image": "items-step-3.png",
+          "caption": "Une carte d'objet avant et après avoir rempli sa fiche."
+        },
+        {
+          "h": "« ✏️ Ajouter les informations »",
+          "t": "ouvre la fiche de l'objet pour noter ce que vous savez : nom, prix, date, lieu d'achat, dimensions, numéro de série, ou toute autre remarque libre."
+        },
+        {
+          "h": "« Retirer », sur la carte",
+          "t": "supprime la photo et sa fiche tout de suite, sans confirmation. Il n'est pas possible d'annuler cette suppression : réfléchissez avant de cliquer."
+        },
+        {
+          "h": "Le nom de l'objet, en haut de la fiche",
+          "t": "par exemple « Canapé en cuir marron ». C'est le seul champ qui donne un titre à la carte ; les autres sont là pour votre assurance.",
+          "image": "items-step-4.png",
+          "caption": "Le début de la fiche : nom de l'objet et bouton « ? Aide »."
+        },
+        {
+          "h": "Prix, date et lieu d'achat, dimensions",
+          "t": "quatre cases côte à côte pour ce que vous vous souvenez de l'achat. Laissez vide ce que vous ne savez pas, ce n'est pas grave."
+        },
+        {
+          "h": "Numéro de série ou de référence",
+          "t": "souvent inscrit au dos ou dessous de l'appareil (télévision, électroménager…). Utile pour l'assurance, mais facultatif.",
+          "image": "items-step-5.png",
+          "caption": "Les champs numéro de série et « Autres informations »."
+        },
+        {
+          "h": "« Autres informations »",
+          "t": "une grande case pour écrire librement tout ce qui vous semble utile : l'état de l'objet, sa couleur, un souvenir, un cadeau reçu…"
+        },
+        {
+          "h": "« ? Aide », en haut de la fiche",
+          "t": "rejoue les bulles d'explication de la fiche, champ par champ."
+        },
+        {
+          "h": "« Supprimer », « Annuler » et « Enregistrer », en bas de la fiche",
+          "t": "« Supprimer » retire l'objet après une question de confirmation. « Annuler » ferme la fiche sans rien garder. « Enregistrer » sauvegarde ce que vous avez écrit.",
+          "image": "items-step-6.png",
+          "caption": "Les trois boutons en bas de la fiche d'un objet."
+        },
+        {
+          "h": "« ← Mes pièces » et « Continuer vers l'aperçu → », en bas de l'écran",
+          "t": "permettent de revenir à la liste des pièces ou d'avancer vers l'étape « Aperçu », même avec beaucoup de photos affichées."
+        }
       ],
-      "tip": "Rien n'est obligatoire. Notez seulement ce que vous savez."
+      "tip": "Rien n'est obligatoire dans la fiche d'un objet. Notez seulement ce que vous savez : même une simple photo, sans aucune information, est déjà utile pour votre assurance."
     },
     {
       "id": "review",
@@ -46,11 +178,32 @@
       "title": "Aperçu",
       "icon": "👀",
       "blocks": [
-        { "h": "Les trois compteurs", "t": "le nombre de pièces, d'objets, et la valeur estimée." },
-        { "h": "La liste par pièce", "t": "chaque objet avec sa photo et ses informations." },
-        { "h": "« Modifier »", "t": "revient en arrière pour corriger ou compléter." }
+        {
+          "h": "Les trois compteurs, en haut",
+          "t": "le nombre de pièces, le nombre d'objets, et la valeur totale estimée (calculée à partir des prix que vous avez notés). Le signe « — » veut simplement dire qu'aucun prix n'a encore été renseigné.",
+          "image": "review-step-1.png",
+          "caption": "Les trois compteurs : pièces, objets, valeur estimée."
+        },
+        {
+          "h": "Une section par pièce",
+          "t": "chaque pièce que vous avez créée apparaît avec son nom et le nombre d'objets qu'elle contient, suivie de toutes ses photos.",
+          "image": "review-step-2.png",
+          "caption": "Une pièce avec ses objets, tels qu'ils apparaîtront dans le PDF."
+        },
+        {
+          "h": "Chaque objet de la liste",
+          "t": "affiche sa photo, son nom, et toutes les informations que vous avez notées. S'il n'a aucune information, un petit texte en italique « Aucune information ajoutée » le rappelle."
+        },
+        {
+          "h": "« ← Modifier », en bas de l'écran",
+          "t": "revient à l'étape « Vos objets » pour corriger une information ou ajouter une photo oubliée."
+        },
+        {
+          "h": "« Passer au PDF → », en bas de l'écran",
+          "t": "avance vers la dernière étape, la création du document PDF pour votre assurance."
+        }
       ],
-      "tip": "Le bon moment pour tout vérifier avant de créer le PDF."
+      "tip": "C'est le bon moment pour tout relire tranquillement et corriger ce que vous voulez avant de créer le PDF final."
     },
     {
       "id": "export",
@@ -59,46 +212,75 @@
       "title": "Créer le PDF",
       "icon": "📄",
       "blocks": [
-        { "h": "« Voir l'aperçu du PDF »", "t": "montre le document page par page." },
-        { "h": "« Télécharger le PDF »", "t": "enregistre le fichier sur l'ordinateur." },
-        { "h": "Envoi à l'assurance", "t": "le PDF peut être joint à un e-mail ou imprimé." }
+        {
+          "h": "Le résumé « Votre document contiendra »",
+          "t": "rappelle combien d'objets et de pièces seront inclus dans le document, avant même de le créer.",
+          "image": "export-step-1.png",
+          "caption": "Le résumé du document, au-dessus du bouton d'aperçu."
+        },
+        {
+          "h": "« Voir l'aperçu du PDF »",
+          "t": "ouvre le document tel qu'il sera, page par page : une page de couverture avec le résumé, puis une page par objet. S'il n'y a encore aucune photo, un message vous demande d'en ajouter d'abord."
+        },
+        {
+          "h": "« ← Revenir à l'aperçu », sous le bouton",
+          "t": "retourne à l'écran précédent (« Aperçu ») si vous voulez encore modifier quelque chose."
+        },
+        {
+          "h": "« Imprimer », en haut de l'aperçu du PDF",
+          "t": "ouvre directement la fenêtre d'impression habituelle de l'ordinateur, où vous pouvez choisir votre imprimante ou « Enregistrer au format PDF ».",
+          "image": "export-step-2.png",
+          "caption": "Les boutons en haut de l'aperçu : Imprimer, Fermer, Télécharger le PDF."
+        },
+        {
+          "h": "« Fermer »",
+          "t": "referme l'aperçu et revient à l'écran précédent, sans rien enregistrer."
+        },
+        {
+          "h": "« Télécharger le PDF »",
+          "t": "enregistre le vrai fichier PDF sur votre ordinateur, à l'endroit que vous choisissez. Pendant la création, le bouton affiche une petite roue et le texte « Création en cours… »."
+        },
+        {
+          "h": "La page de couverture",
+          "t": "reprend le titre « Liste de mes objets », la date, le nombre de pièces et d'objets, et la valeur totale estimée."
+        },
+        {
+          "h": "Une page par objet",
+          "t": "chaque objet occupe sa propre page, avec sa photo et toutes ses informations dans un tableau clair. S'il n'a aucune information, un texte en italique le précise.",
+          "image": "export-step-3.png",
+          "caption": "La page d'un objet dans le PDF, photo et informations."
+        }
       ],
-      "tip": "Une photo et ses informations par page : clair et facile à lire."
+      "tip": "Une photo et ses informations par page : un document clair et facile à lire pour votre assurance, prêt à être imprimé ou envoyé par e-mail."
     }
   ],
   "steps": [
-    { "h": "Créez vos pièces", "t": "Une pièce pour chaque endroit : salon, cuisine, chambre…" },
-    { "h": "Ajoutez vos photos", "t": "Ouvrez une pièce, puis ajoutez vos photos." },
-    { "h": "Décrivez chaque objet", "t": "Notez ce que vous savez sous chaque photo." },
-    { "h": "Vérifiez l'aperçu", "t": "Tout est récapitulé, avec la valeur totale." },
-    { "h": "Téléchargez le PDF", "t": "Un document prêt pour votre assurance." }
+    { "h": "Créez vos pièces", "t": "Une pièce pour chaque endroit de votre logement : salon, cuisine, chambre… Vous pouvez toutes les créer d'un coup." },
+    { "h": "Ouvrez une pièce et ajoutez vos photos", "t": "Une par une avec « Ajouter des photos », ou un dossier entier d'un seul coup avec « Choisir un dossier »." },
+    { "h": "Décrivez chaque objet, si vous le souhaitez", "t": "Cliquez « Ajouter les informations » sous une photo et notez ce que vous savez : rien n'est obligatoire." },
+    { "h": "Vérifiez dans l'aperçu", "t": "Tout est récapitulé pièce par pièce, avec la valeur totale estimée. Vous pouvez encore tout modifier." },
+    { "h": "Téléchargez le PDF", "t": "Un document clair, prêt à être imprimé ou envoyé à votre assurance par e-mail." }
   ],
   "faq": [
-    { "q": "Dois-je tout remplir ?", "a": "Non. Tous les champs sont facultatifs. Une photo seule est déjà utile." },
-    { "q": "Mon travail est-il perdu si je ferme ?", "a": "Non. Il est gardé tout seul sur cet ordinateur." },
-    { "q": "Mes photos partent-elles sur Internet ?", "a": "Non. Tout reste sur votre ordinateur." },
-    {
-      "q": "Comment corriger une information ?",
-      "a": "Rouvrez la pièce, cliquez « Ajouter les informations » sous la photo, modifiez, puis « Enregistrer »."
-    },
-    { "q": "Comment recommencer à zéro ?", "a": "En haut, le bouton « Recommencer » efface tout et repart de l'accueil." }
+    { "q": "Dois-je tout remplir ?", "a": "Non, jamais. Tous les champs de la fiche d'un objet sont facultatifs. Une photo seule, sans aucune information, est déjà utile." },
+    { "q": "Mon travail est-il perdu si je ferme l'application ?", "a": "Non. Tout est gardé automatiquement sur cet ordinateur, sans aucune action de votre part. Vous pouvez fermer à tout moment et reprendre plus tard exactement où vous en étiez." },
+    { "q": "Où sont gardées mes photos et mes informations ?", "a": "Uniquement sur cet ordinateur, dans un dossier propre à l'application. Vos photos originales ne sont ni déplacées ni modifiées : l'application en garde sa propre copie." },
+    { "q": "Mes photos ou mes informations partent-elles sur Internet ?", "a": "Non. Rien n'est envoyé ni partagé. Tout reste sur votre ordinateur, sauf la toute petite vérification de mise à jour au démarrage, qui ne contient aucune de vos données." },
+    { "q": "Comment corriger une information sur un objet ?", "a": "Rouvrez la pièce concernée, cliquez « Ajouter les informations » sous la photo, modifiez ce que vous voulez, puis « Enregistrer »." },
+    { "q": "Puis-je créer deux pièces avec le même nom ?", "a": "Non, pour éviter la confusion. Si le nom existe déjà, un message vous le signale et rien n'est ajouté en double." },
+    { "q": "Comment imprimer directement mon document, sans passer par un fichier ?", "a": "Dans l'aperçu du PDF (étape 4), cliquez « Imprimer » : la fenêtre d'impression habituelle de l'ordinateur s'ouvre directement." },
+    { "q": "Comment savoir si une nouvelle version de l'application existe ?", "a": "L'application vérifie automatiquement au démarrage et vous propose de l'installer si une nouvelle version existe. Vous pouvez aussi vérifier à tout moment avec le bouton « Vérifier les mises à jour » en haut de l'écran." },
+    { "q": "Comment recommencer entièrement à zéro ?", "a": "Le bouton « Recommencer », en haut de l'écran, efface tout l'inventaire après vous avoir demandé de confirmer. Cette action ne peut pas être annulée." },
+    { "q": "Ai-je besoin d'Internet pour utiliser l'application ?", "a": "Non. Tout fonctionne sans connexion, sauf la vérification des mises à jour, qui échoue simplement en silence si vous n'êtes pas connecté." }
   ],
   "trouble": [
-    {
-      "q": "Ma photo ne s'ajoute pas",
-      "a": "Vérifiez que c'est bien une image (jpg, png). Réessayez avec « Ajouter des photos »."
-    },
-    {
-      "q": "Le PDF ne se télécharge pas",
-      "a": "Vérifiez qu'il y a au moins une photo. Réessayez, puis regardez dans « Téléchargements »."
-    },
-    {
-      "q": "J'ai supprimé un objet par erreur",
-      "a": "Il faudra le rajouter. Les suppressions ne peuvent pas être annulées."
-    },
-    {
-      "q": "Le texte est trop petit",
-      "a": "Demandez à une personne qui vous aide d'agrandir l'affichage de l'écran."
-    }
+    { "q": "Windows affiche « Windows a protégé votre ordinateur » à l'installation", "a": "C'est normal pour une petite application comme celle-ci. Cliquez sur « Informations complémentaires » (ou « Plus d'infos »), puis sur « Exécuter quand même »." },
+    { "q": "Ma photo ne s'ajoute pas", "a": "Vérifiez que le fichier est bien une image (jpg, png, webp…). Réessayez avec « Ajouter des photos » et choisissez le fichier à nouveau." },
+    { "q": "Le PDF ne se télécharge pas", "a": "Vérifiez qu'il y a au moins une photo dans votre inventaire — le bouton d'aperçu le rappelle sinon. Réessayez, puis regardez dans le dossier que vous avez choisi lors de l'enregistrement." },
+    { "q": "J'ai supprimé un objet ou une pièce par erreur", "a": "La suppression d'un objet depuis sa carte (bouton « Retirer ») est immédiate et ne peut pas être annulée. Il faudra rajouter la photo et ses informations." },
+    { "q": "Le texte est trop petit pour bien lire", "a": "L'application n'a pas encore de réglage de taille de texte. En attendant, une personne qui vous aide peut agrandir l'affichage dans les réglages de Windows (Paramètres → Système → Affichage → Mise à l'échelle)." },
+    { "q": "Une fenêtre de mise à jour est apparue, que faire ?", "a": "C'est l'application qui a trouvé une nouvelle version. Vous pouvez lire ce qui a changé, puis cliquer « Mettre à jour » pour l'installer tout de suite, ou « Plus tard » pour continuer sans elle." },
+    { "q": "L'application ne s'ouvre pas ou se ferme toute seule", "a": "Redémarrez l'ordinateur, puis réessayez d'ouvrir l'application. Si le problème persiste, désinstallez-la et réinstallez la dernière version depuis le fichier d'installation." },
+    { "q": "Je ne trouve pas le fichier PDF téléchargé", "a": "Il a été enregistré à l'endroit que vous avez choisi dans la fenêtre au moment du téléchargement — souvent le dossier « Téléchargements » si vous n'avez rien changé." }
   ]
 }

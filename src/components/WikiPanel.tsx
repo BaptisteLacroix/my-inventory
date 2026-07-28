@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 import { useLockBodyScroll } from '../lib/useLockBodyScroll';
 import {
@@ -333,6 +333,11 @@ export function WikiPanel({ selection, onSelect, onClose, onReplayTour }: WikiPa
   useLockBodyScroll();
 
   const screen = findWikiScreen(selection) ?? null;
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contentRef.current) contentRef.current.scrollTop = 0;
+  }, [selection]);
 
   return createPortal(
     <div
@@ -438,7 +443,7 @@ export function WikiPanel({ selection, onSelect, onClose, onReplayTour }: WikiPa
             ))}
           </div>
 
-          <div style={{ flex: 1, overflow: 'auto', padding: '22px 24px 50px' }}>
+          <div ref={contentRef} style={{ flex: 1, overflow: 'auto', padding: '22px 24px 50px' }}>
             {screen && <ScreenSection screen={screen} onReplayTour={onReplayTour} />}
 
             {selection === 'steps' && (
