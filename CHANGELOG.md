@@ -4,6 +4,14 @@ All notable changes to this project are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.4.0] - 2026-07-28
+
+### Added
+- An in-app help guide (the floating "?" button, bottom-right, or "Aide" in the header): a screen-by-screen walkthrough with a screenshot and numbered explanations for every button and interaction, a step-by-step overview of the whole process, a FAQ, and a troubleshooting section — all illustrated with real screenshots of the app rather than placeholder text. Opening it from a given screen jumps straight to that screen's guide, and you can replay its guided-tour bubbles directly from there.
+
+### Fixed
+- The help guide's content pane no longer keeps its previous scroll position when switching sections — jumping from a screen guide you'd scrolled through to a short section like the FAQ used to open scrolled to the bottom instead of the top.
+
 ## [0.3.0] - 2026-07-26
 
 ### Added
@@ -37,6 +45,7 @@ First release. A guided desktop app for photographing and cataloguing your belon
 - Single inventory only (multiple named inventories are planned but not in this release)
 - Interface is in French
 
+[0.4.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.4.0
 [0.3.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.3.0
 [0.2.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.2.0
 [0.1.1]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.1.1
