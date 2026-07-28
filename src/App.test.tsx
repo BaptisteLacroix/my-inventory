@@ -12,10 +12,15 @@ const mocks = vi.hoisted(() => ({
   confirm: vi.fn(),
   clearInventoryImages: vi.fn(),
   getItemImageSrc: vi.fn(),
+  openWiki: vi.fn(),
 }));
 
 vi.mock('./state/TourContext', () => ({
   useTour: () => ({ startScreenTour: mocks.startScreenTour, startFormTour: mocks.startFormTour }),
+}));
+
+vi.mock('./state/WikiContext', () => ({
+  useWiki: () => ({ openWiki: mocks.openWiki }),
 }));
 
 vi.mock('./state/InventoryContext', () => ({
@@ -88,12 +93,12 @@ describe('App', () => {
     expect(lastDispatched()).toEqual({ type: 'GO_TO', screen: 'items' });
   });
 
-  it('force-replays the tour for the current screen via the Aide button', async () => {
+  it('opens the wiki via the Aide button', async () => {
     const user = userEvent.setup();
     mocks.state = makeState('review');
     render(<App />);
     await user.click(screen.getByText('Aide'));
-    expect(mocks.startScreenTour).toHaveBeenCalledWith('review', true);
+    expect(mocks.openWiki).toHaveBeenCalledTimes(1);
   });
 
   it('resets the inventory after confirmation', async () => {

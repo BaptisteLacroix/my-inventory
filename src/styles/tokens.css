@@ -68,6 +68,27 @@ button {
   }
 }
 
+@keyframes pulseHelp {
+  0%,
+  100% {
+    box-shadow: 0 8px 22px rgba(47, 125, 110, 0.35);
+  }
+  50% {
+    box-shadow:
+      0 8px 22px rgba(47, 125, 110, 0.35),
+      0 0 0 10px rgba(47, 125, 110, 0.14);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
 @media print {
   @page {
     margin: 14mm;

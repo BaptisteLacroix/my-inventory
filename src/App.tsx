@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { confirm } from '@tauri-apps/plugin-dialog';
 import { useInventory } from './state/InventoryContext';
-import { useTour } from './state/TourContext';
+import { useWiki } from './state/WikiContext';
 import { StepTimeline } from './components/StepTimeline';
 import { Toast } from './components/Toast';
 import { Welcome } from './screens/Welcome';
@@ -27,7 +27,7 @@ function useToast() {
 function App() {
   const { state, dispatch } = useInventory();
   const { message, show } = useToast();
-  const { startScreenTour } = useTour();
+  const { openWiki } = useWiki();
   const [updateCheckSignal, setUpdateCheckSignal] = useState(0);
 
   function navigate(screen: Screen) {
@@ -71,9 +71,36 @@ function App() {
           </div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
             <button
-              onClick={() => startScreenTour(state.screen, true)}
-              style={{ background: 'transparent', color: '#5c5346', border: 'none', borderRadius: 12, padding: '10px 10px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}
+              onClick={() => openWiki()}
+              style={{
+                background: '#fffdf8',
+                color: 'var(--accent)',
+                border: '2px solid var(--accent)',
+                borderRadius: 12,
+                padding: '9px 16px',
+                fontSize: 16,
+                fontWeight: 800,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+              }}
             >
+              <span
+                style={{
+                  display: 'inline-flex',
+                  width: 22,
+                  height: 22,
+                  borderRadius: '50%',
+                  background: 'var(--accent)',
+                  color: '#fff',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 15,
+                }}
+              >
+                ?
+              </span>
               Aide
             </button>
             <button
