@@ -4,6 +4,15 @@ All notable changes to this project are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.5.0] - 2026-07-29
+
+### Added
+- The step navigation is now a sticky sidebar to the left of the screen, instead of a horizontal ribbon above it: each step shows a number/checkmark badge, its label, a status ("Terminé" / "Vous êtes ici" / "À faire"), and a chevron, topped by a "Touchez une étape" hint.
+- "Vos objets", "Aperçu", and "PDF" stay locked (🔒 "Verrouillé") in that sidebar until you've created at least one room — touching a locked step redirects to "Vos pièces" with an explanatory message instead of opening an empty screen.
+
+### Changed
+- The in-app help guide's "Accueil" section now describes the sidebar (and the new lock icons) instead of the old ribbon, with a matching FAQ entry and refreshed screenshots.
+
 ## [0.4.0] - 2026-07-28
 
 ### Added
@@ -45,6 +54,7 @@ First release. A guided desktop app for photographing and cataloguing your belon
 - Single inventory only (multiple named inventories are planned but not in this release)
 - Interface is in French
 
+[0.5.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.5.0
 [0.4.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.4.0
 [0.3.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.3.0
 [0.2.0]: https://github.com/BaptisteLacroix/my-inventory/releases/tag/v0.2.0
