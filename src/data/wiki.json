@@ -9,10 +9,14 @@
       "icon": "🏠",
       "blocks": [
         {
-          "h": "Le ruban en haut de l'écran",
-          "t": "il montre les 5 étapes (Bienvenue, Vos pièces, Vos objets, Aperçu, PDF) et vous suit sur tous les écrans. Une fois une étape atteinte, vous pouvez cliquer dessus pour y revenir directement.",
+          "h": "Le menu à gauche de l'écran",
+          "t": "il montre les 5 étapes (Bienvenue, Vos pièces, Vos objets, Aperçu, PDF) et reste affiché pendant que vous lisez la page, même si vous faites défiler vers le bas. Une coche verte ✓ marque une étape déjà faite ; l'étape en cours est en orange avec « Vous êtes ici ». Touchez une étape pour y aller directement.",
           "image": "welcome-step-1.png",
-          "caption": "Le ruban des 5 étapes, toujours visible en haut."
+          "caption": "Le menu des 5 étapes, à gauche de l'écran."
+        },
+        {
+          "h": "Les étapes verrouillées 🔒",
+          "t": "tant qu'aucune pièce n'a été créée, « Vos objets », « Aperçu » et « PDF » restent verrouillées : un petit cadenas remplace la flèche, et toucher l'étape vous ramène simplement à « Vos pièces ». Elles se débloquent automatiquement dès que vous créez votre toute première pièce."
         },
         {
           "h": "« Commencer »",
@@ -268,6 +272,7 @@
     { "q": "Mes photos ou mes informations partent-elles sur Internet ?", "a": "Non. Rien n'est envoyé ni partagé. Tout reste sur votre ordinateur, sauf la toute petite vérification de mise à jour au démarrage, qui ne contient aucune de vos données." },
     { "q": "Comment corriger une information sur un objet ?", "a": "Rouvrez la pièce concernée, cliquez « Ajouter les informations » sous la photo, modifiez ce que vous voulez, puis « Enregistrer »." },
     { "q": "Puis-je créer deux pièces avec le même nom ?", "a": "Non, pour éviter la confusion. Si le nom existe déjà, un message vous le signale et rien n'est ajouté en double." },
+    { "q": "Pourquoi « Vos objets », « Aperçu » et « PDF » sont-ils verrouillés 🔒 dans le menu ?", "a": "Parce qu'aucune pièce n'a encore été créée. Créez votre première pièce à l'étape « Vos pièces » : les autres étapes se débloquent aussitôt." },
     { "q": "Comment imprimer directement mon document, sans passer par un fichier ?", "a": "Dans l'aperçu du PDF (étape 4), cliquez « Imprimer » : la fenêtre d'impression habituelle de l'ordinateur s'ouvre directement." },
     { "q": "Comment savoir si une nouvelle version de l'application existe ?", "a": "L'application vérifie automatiquement au démarrage et vous propose de l'installer si une nouvelle version existe. Vous pouvez aussi vérifier à tout moment avec le bouton « Vérifier les mises à jour » en haut de l'écran." },
     { "q": "Comment recommencer entièrement à zéro ?", "a": "Le bouton « Recommencer », en haut de l'écran, efface tout l'inventaire après vous avoir demandé de confirmer. Cette action ne peut pas être annulée." },
