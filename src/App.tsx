@@ -31,6 +31,11 @@ function App() {
   const [updateCheckSignal, setUpdateCheckSignal] = useState(0);
 
   function navigate(screen: Screen) {
+    if (screen !== 'welcome' && screen !== 'rooms' && state.rooms.length === 0) {
+      show("Créez d'abord une pièce pour continuer.");
+      dispatch({ type: 'GO_TO', screen: 'rooms' });
+      return;
+    }
     if (screen === 'items' && !state.currentRoomId) {
       dispatch({ type: 'GO_TO', screen: 'rooms' });
       return;
@@ -117,15 +122,15 @@ function App() {
             </button>
           </div>
         </div>
-
-        <StepTimeline screen={state.screen} onNavigate={navigate} />
       </div>
 
       <div
         style={{
           flex: 1,
           display: 'flex',
-          flexDirection: 'column',
+          alignItems: 'flex-start',
+          flexWrap: 'wrap',
+          gap: 26,
           width: '100%',
           maxWidth: 1600,
           margin: '0 auto',
@@ -133,11 +138,15 @@ function App() {
           boxSizing: 'border-box',
         }}
       >
-        {state.screen === 'welcome' && <Welcome onStart={() => dispatch({ type: 'GO_TO', screen: 'rooms' })} />}
-        {state.screen === 'rooms' && <Rooms onToast={show} />}
-        {state.screen === 'items' && <Items onToast={show} />}
-        {state.screen === 'review' && <Review />}
-        {state.screen === 'export' && <Export onToast={show} />}
+        <StepTimeline screen={state.screen} onNavigate={navigate} hasRooms={state.rooms.length > 0} />
+
+        <div style={{ flex: '3 1 440px', minWidth: 0 }}>
+          {state.screen === 'welcome' && <Welcome onStart={() => dispatch({ type: 'GO_TO', screen: 'rooms' })} />}
+          {state.screen === 'rooms' && <Rooms onToast={show} />}
+          {state.screen === 'items' && <Items onToast={show} />}
+          {state.screen === 'review' && <Review />}
+          {state.screen === 'export' && <Export onToast={show} />}
+        </div>
       </div>
 
       <Toast message={message} />
